@@ -5,21 +5,11 @@ const bookList = document.querySelector('.booklist');
 
 let bookCollection = JSON.parse(localStorage.getItem('bookStorage')) || [];
 
-
 class CreateBook {
   constructor(title, author) {
     this.id = title;
     this.title = title;
     this.author = author;
-  }
-}
-
-function localStorageToWebpage() {
-  if (localStorage !== null) {
-    const store = JSON.parse(localStorage.getItem('bookStorage'))
-    store.forEach((book) => {
-      bookTemplate(book.title, book.author)
-    })
   }
 }
 
@@ -42,10 +32,19 @@ function bookTemplate(title, author) {
       bookCollection.forEach((book) => {
         bookTemplate(book.title, book.author);
       });
-      localStorage.setItem('bookStorage', JSON.stringify(bookCollection))
+      localStorage.setItem('bookStorage', JSON.stringify(bookCollection));
     });
   });
-  localStorage.setItem('bookStorage', JSON.stringify(bookCollection))
+  localStorage.setItem('bookStorage', JSON.stringify(bookCollection));
+}
+
+function localStorageToWebpage() {
+  if (localStorage !== null) {
+    const store = JSON.parse(localStorage.getItem('bookStorage'));
+    store.forEach((book) => {
+      bookTemplate(book.title, book.author);
+    });
+  }
 }
 
 function addandRemoveBook() {
@@ -55,8 +54,7 @@ function addandRemoveBook() {
     bookTitle.value = '';
     bookAuthor.value = '';
   });
-  localStorage.setItem('bookStorage', JSON.stringify(bookCollection))
-  localStorageToWebpage()
+  localStorage.setItem('bookStorage', JSON.stringify(bookCollection));
+  localStorageToWebpage();
 }
 addandRemoveBook();
-
