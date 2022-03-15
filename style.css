@@ -8,11 +8,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+  align-items: center;
+  
 }
 
-.boolist {
+.list {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.booklist{
+  background: rgb(172, 172, 172);
+  width: 100%;
 }
 
 .addbooks{
@@ -21,4 +32,18 @@
   align-items: center;
   gap: 10px;
   margin: 10px, auto;
+  width: 40%;
+}
+
+.addbooks .add {
+  align-self: flex-end;
+}
+
+.addbooks input {
+  width: 100%;
+}
+
+.remove{
+  border: 2px solid black;
+  height: max-content;
 }
