@@ -42,7 +42,7 @@ function localStorageToWebpage() {
   if (localStorage !== null) {
     const store = JSON.parse(localStorage.getItem('bookStorage'));
     store.forEach((book) => {
-      bookTemplate(book.title, book.author);
+      bookTemplate(book.title, book.author, book.id);
     });
   }
 }
