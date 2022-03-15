@@ -7,19 +7,19 @@ let bookCollection = JSON.parse(localStorage.getItem('bookStorage')) || [];
 
 class CreateBook {
   constructor(title, author) {
-    this.id = title;
+    this.id = Date.now();
     this.title = title;
     this.author = author;
   }
 }
 
-function bookTemplate(title, author) {
+function bookTemplate(title, author, id) {
   bookList.innerHTML
     += `
     <div class="book">
       <p>${title}</p>
       <p>${author}</p>
-      <button type="button" id="${title}" class="remove" >Remove</button>
+      <button type="button" id="${id}" class="remove" >Remove</button>
     </div>
     `;
 
@@ -27,10 +27,10 @@ function bookTemplate(title, author) {
   const removeButton = document.querySelectorAll('.remove');
   removeButton.forEach((button) => {
     button.addEventListener('click', () => {
-      bookCollection = bookCollection.filter((book) => button.id !== book.id);
+      bookCollection = bookCollection.filter((book) => Number(button.id) !== book.id);
       bookList.innerHTML = '';
       bookCollection.forEach((book) => {
-        bookTemplate(book.title, book.author);
+        bookTemplate(book.title, book.author, book.id);
       });
       localStorage.setItem('bookStorage', JSON.stringify(bookCollection));
     });
@@ -49,8 +49,9 @@ function localStorageToWebpage() {
 
 function addandRemoveBook() {
   addButton.addEventListener('click', () => {
-    bookCollection.push(new CreateBook(bookTitle.value, bookAuthor.value));
-    bookTemplate(bookTitle.value, bookAuthor.value);
+    const currentBook = new CreateBook(bookTitle.value, bookAuthor.value);
+    bookCollection.push(currentBook);
+    bookTemplate(bookTitle.value, bookAuthor.value, currentBook.id);
     bookTitle.value = '';
     bookAuthor.value = '';
   });
