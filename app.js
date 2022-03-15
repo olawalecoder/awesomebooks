@@ -3,23 +3,37 @@ const bookAuthor = document.querySelector('.author');
 const addButton = document.querySelector('.add');
 const bookList = document.querySelector('.booklist');
 
-let bookCollection = [];
+let bookCollection = JSON.parse(localStorage.getItem('bookStorage')) || [];
 
-function CreateBook(title, author) {
-  this.id = title;
-  this.title = title;
-  this.author = author;
+
+class CreateBook {
+  constructor(title, author) {
+    this.id = title;
+    this.title = title;
+    this.author = author;
+  }
+}
+
+function localStorageToWebpage() {
+  if (localStorage !== null) {
+    const store = JSON.parse(localStorage.getItem('bookStorage'))
+    store.forEach((book) => {
+      bookTemplate(book.title, book.author)
+    })
+  }
 }
 
 function bookTemplate(title, author) {
   bookList.innerHTML
     += `
-    <div id="${title}" class="book">
+    <div class="book">
       <p>${title}</p>
       <p>${author}</p>
       <button type="button" id="${title}" class="remove" >Remove</button>
     </div>
     `;
+
+  // remove items from the list of books
   const removeButton = document.querySelectorAll('.remove');
   removeButton.forEach((button) => {
     button.addEventListener('click', () => {
@@ -28,8 +42,10 @@ function bookTemplate(title, author) {
       bookCollection.forEach((book) => {
         bookTemplate(book.title, book.author);
       });
+      localStorage.setItem('bookStorage', JSON.stringify(bookCollection))
     });
   });
+  localStorage.setItem('bookStorage', JSON.stringify(bookCollection))
 }
 
 function addandRemoveBook() {
@@ -39,5 +55,8 @@ function addandRemoveBook() {
     bookTitle.value = '';
     bookAuthor.value = '';
   });
+  localStorage.setItem('bookStorage', JSON.stringify(bookCollection))
+  localStorageToWebpage()
 }
 addandRemoveBook();
+
