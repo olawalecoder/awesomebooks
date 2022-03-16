@@ -1,10 +1,42 @@
 * {
   box-sizing: content-box;
-  font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
 }
+header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border: 2px solid black;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+h1 {
+  font-size: 25px;
+  margin: 0 0 0 20px;
+}
 
+.navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: min-content;
+}
+.navigation > li {
+  border-right: 2px solid black;
+  width: max-content;
+  padding: 0 10px;
+}
+
+#contact-info {
+  border: none;
+}
+.focus {
+  color: green;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -24,8 +56,11 @@
 .list:nth-child(odd) {
   background-color: white;
 }
-
 .booklist {
+  width: 100%;
+}
+
+.books {
   background: rgb(202, 201, 201);
   width: 100%;
   border: 2px solid black;
@@ -47,11 +82,6 @@
 .addbooks input {
   width: 100%;
   border: 2px solid black;
-}
-
-h1,
-h2 {
-  font-size: 25px;
 }
 
 .remove,
