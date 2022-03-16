@@ -1,4 +1,61 @@
 * {
-  font-size: 30px;
+  box-sizing: content-box;
+  font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.list:nth-child(odd) {
+  background-color: white;
+}
+
+.booklist {
+  background: rgb(202, 201, 201);
+  width: 100%;
+  border: 2px solid black;
+}
+
+.addbooks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 10px auto;
+  width: 40%;
+}
+
+.add {
+  align-self: flex-end;
+}
+
+.addbooks input {
+  width: 100%;
+  border: 2px solid black;
+}
+
+h1,
+h2 {
+  font-size: 25px;
+}
+
+.remove,
+.add {
+  border: 2px solid black;
+  height: max-content;
 }
