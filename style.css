@@ -89,3 +89,29 @@ h1 {
   border: 2px solid black;
   height: max-content;
 }
+
+.contact {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contact h1 {
+  text-align: center;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+footer {
+  border: 3px solid black;
+  padding: 10px;
+  margin: 0 5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0; 
+}
