@@ -20,10 +20,14 @@ function currentDate() {
   let hour = fullDate.getHours();
   let min = fullDate.getMinutes();
   let sec = fullDate.getSeconds();
-  let midday = "AM";
-  midday = (hour >= 12) ? "PM" : "AM"; /* assigning AM/PM */
+  let midday = 'AM';
+  midday = (hour >= 12) ? 'PM' : 'AM'; /* assigning AM/PM */
   let dayFormat = '';
-  hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12) : hour); 
+  if (hour === 0) {
+    hour = 12;
+  } else if (hour > 12) {
+    hour -= 12;
+  }
   hour = updateTime(hour);
   min = updateTime(min);
   sec = updateTime(sec);
@@ -42,5 +46,3 @@ function currentDate() {
 }
 
 currentDate(); /* calling currentTime() function to initiate the process */
-
-
